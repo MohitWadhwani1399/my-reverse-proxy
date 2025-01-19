@@ -1,0 +1,30 @@
+server:
+  listen: 8080
+  workers: 4
+  headers:
+    - key: x-forward-for
+      value: '$ip' 
+    - key: Authorization
+      value: 'Bearer Token' 
+  upstreams:
+    - id: node1
+      url: jsonplaceholder.typicode.com/todos
+
+    - id: node2
+      url: jsonplaceholder.typicode.com
+
+    - id: node3
+      url: http://localhost:8003
+
+    - id: node4
+      url: http://localhost:8004
+
+  rules:
+    - path: /
+      upstreams:
+        - node1
+        - node2
+
+    - path: /todos
+      upstreams: 
+        - node2
