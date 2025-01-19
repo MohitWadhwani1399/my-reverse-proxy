@@ -47,7 +47,6 @@ export async function createServer(config: CreateServerConfig) {
           }
         });
       }
-      //console.log(worker);
     });
     server.listen(config.port, () => {
       console.log(`Reverse Proxy listening on Port ${config.port}`);
@@ -107,7 +106,6 @@ export async function createServer(config: CreateServerConfig) {
         }
       );
       request.end();
-      //console.log(`Worker:`,upstream);
     });
   }
 }

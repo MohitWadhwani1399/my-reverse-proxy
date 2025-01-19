@@ -14,7 +14,6 @@ async function main() {
     const validatedConfig: ConfigSchemaType = await validateParsedYaml(
       await parseYamlConfigFile(options.config)
     );
-    //console.log(validatedConfig);
     const { workers, listen } = validatedConfig.server;
     await createServer({
       port: listen,
